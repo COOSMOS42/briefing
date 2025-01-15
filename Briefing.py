@@ -90,7 +90,7 @@ with st.form('Preencha os dados', clear_on_submit=True, border=True):
 
     j = st.text_input('Existem algum(s) logo(s) que você acha interessante e que o perfil dele se encaixe com o seu? Se sim, deixe o link e explique o porquê.')
 
-    k = st.text_input('Espaço para upload do logo que acha interessante.')
+    k = st.file_uploader(label, type=None, accept_multiple_files=True, key=None, help=None, on_change=None, args=None, kwargs=None, *, disabled=False, label_visibility="visible")
 
     l = st.text_input('Existe alguma cor que NÃO deve ser utilizada? Se sim, por quê?')
 
