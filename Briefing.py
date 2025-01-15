@@ -104,3 +104,11 @@ with st.form('Preencha os dados', clear_on_submit=True, border=True):
         st.session_state.jsoninput = adicionar_entrega(
             a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p)
         st.success('Informações salvas com sucesso!')
+
+
+if st.button('Enviar dados 📨'):
+    set_with_dataframe(sheet,
+                       st.session_state.jsoninput,
+                       row=len(sheet.col_values(1)) + 1,
+                       include_column_header=False)
+    st.success('Dados enviados com sucesso!')
