@@ -33,6 +33,8 @@ fr = fr[1:]
 #seta as colunas
 fr.columns = cab
 
+st.set_page_config(page_title='Briefing para construção de logotipos',
+                   layout='wide')
 
 if 'jsoninput' not in st.session_state:
     st.session_state.jsoninput = None
