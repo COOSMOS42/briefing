@@ -18,7 +18,7 @@ scope = [
 creds = service_account.Credentials.from_service_account_info(st.secrets["gcp_service_account"], scopes= scope)
 # Autenticar com o Google Sheets (conectar as credencias)
 client = Client(scope=scope, creds=creds)
-spreadsheetname = "controlador"
+spreadsheetname = "briefing"
 spread = Spread(spreadsheetname, client = client)
 #link com a planilha do google sheets
 sheet = client.open(spreadsheetname).sheet1
