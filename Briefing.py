@@ -39,9 +39,8 @@ st.set_page_config(page_title='Briefing para construção de logotipos',
 if 'jsoninput' not in st.session_state:
     st.session_state.jsoninput = None
 
-def adicionar_entrega(A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P):
+def adicionar_entrega(B, C, D, E, F, G, H, I, J, K, L, M, N, O, P):
     entrega = {
-        'A': A,
         'B': B,
         'C': C,
         'D': D,
@@ -68,8 +67,6 @@ def adicionar_entrega(A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P):
 
 
 with st.form('Preencha os dados', clear_on_submit=True, border=True):
-    st.subheader('Contato')
-    a = st.text_input('Coloque aqui o seu E-mail para contato:')
 
     st.subheader('Briefing')
     b = st.text_input('Qual a área de atuação da empresa?')
