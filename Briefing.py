@@ -105,9 +105,30 @@ with st.form('Preencha os dados', clear_on_submit=False, border=True):
         st.success('Informações salvas com sucesso!')
 
 
-if st.button('Enviar dados 📨'):
-    set_with_dataframe(sheet,
-                       st.session_state.jsoninput,
-                       row=len(sheet.col_values(1)) + 1,
-                       include_column_header=False)
-    st.success('Dados enviados com sucesso!')
+if st.button("Enviar dados 📨"):
+    if "modal_open" not in st.session_state:
+        st.session_state.modal_open = True
+
+# Criando o modal
+if st.session_state.get("modal_open"):
+    with st.modal("Confirmar envio", key="confirmation_modal"):
+        st.write("Você já salvou o formulário?")
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Sim"):
+                st.session_state.modal_open = False
+                # Exemplo de envio de dados para o Google Sheets
+                st.write("Enviando os dados...")
+                # Conexão e envio para o Google Sheets
+                # (substitua 'sheet' e a lógica abaixo com a sua)
+                sheet = None  # Substitua com sua conexão ao Google Sheets
+                set_with_dataframe(sheet,
+                                   st.session_state.jsoninput,
+                                   row=len(sheet.col_values(1)) + 1,
+                                   include_column_header=False)
+                st.success("Dados enviados com sucesso!")
+        with col2:
+            if st.button("Não"):
+                st.session_state.modal_open = False
+                st.warning("Envio cancelado.")
+      
