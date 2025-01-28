@@ -66,7 +66,7 @@ def adicionar_entrega(B, C, D, E, F, G, H, I, J, K, L, M, N, O, P):
     return st.session_state.jsoninput
 
 
-with st.form('Preencha os dados', clear_on_submit=True, border=True):
+with st.form('Preencha os dados', clear_on_submit=False, border=True):
 
     st.subheader('Briefing')
     b = st.text_input('Qual a área de atuação da empresa?')
