@@ -101,7 +101,7 @@ with st.form('Preencha os dados', clear_on_submit=True, border=True):
 
     if st.form_submit_button('Salvar'):
         st.session_state.jsoninput = adicionar_entrega(
-            a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p)
+            b, c, d, e, f, g, h, i, j, k, l, m, n, o, p)
         st.success('Informações salvas com sucesso!')
 
 
