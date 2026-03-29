@@ -39,7 +39,7 @@ st.set_page_config(page_title='Briefing para construção de logotipos',
 if 'jsoninput' not in st.session_state:
     st.session_state.jsoninput = None
 
-def adicionar_entrega(B, C, D, E, F, G, H, I, J, K, L, M, N, O, P):
+def adicionar_entrega(B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q):
     entrega = {
         'B': B,
         'C': C,
@@ -55,7 +55,8 @@ def adicionar_entrega(B, C, D, E, F, G, H, I, J, K, L, M, N, O, P):
         'M': M,
         'N': N,
         'O': O,
-        'P': P
+        'P': P,
+        'Q': Q
     }
 
     st.session_state.jsoninput = pd.concat(
@@ -99,10 +100,12 @@ with st.form('Preencha os dados', clear_on_submit=False, border=True):
 
     p = st.text_input('Fique a vontade para colocar alguma observação extra!')
 
+    q = st.text_input('Deixe o seu melhor email para contato')
+
     st.write('Salve as informaçõs antes do envio')
     if st.form_submit_button('Salvar'):
         st.session_state.jsoninput = adicionar_entrega(
-            b, c, d, e, f, g, h, i, j, k, l, m, n, o, p)
+            b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q)
         st.success('Informações salvas com sucesso!')
 
 
