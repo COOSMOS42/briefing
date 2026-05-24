@@ -18,7 +18,7 @@ scope = [
 creds = service_account.Credentials.from_service_account_info(st.secrets["gcp_service_account"], scopes= scope)
 # Autenticar com o Google Sheets (conectar as credencias)
 client = Client(scope=scope, creds=creds)
-spreadsheetname = "briefing"
+spreadsheetname = "trainee"
 spread = Spread(spreadsheetname, client = client)
 #link com a planilha do google sheets
 sheet = client.open(spreadsheetname).sheet1
@@ -39,7 +39,7 @@ st.set_page_config(page_title='Briefing para construção de logotipos',
 if 'jsoninput' not in st.session_state:
     st.session_state.jsoninput = None
 
-def adicionar_entrega(B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q):
+def adicionar_entrega(B, C, D, E, F, G, H):
     entrega = {
         'B': B,
         'C': C,
@@ -47,16 +47,7 @@ def adicionar_entrega(B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q):
         'E' : E,
         'F': F,
         'G': G,
-        'H': H,
-        'I': I,
-        'J': J,
-        'K': K,
-        'L': L,
-        'M': M,
-        'N': N,
-        'O': O,
-        'P': P,
-        'Q': Q
+        'H': H
     }
 
     st.session_state.jsoninput = pd.concat(
@@ -69,43 +60,28 @@ def adicionar_entrega(B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q):
 
 with st.form('Preencha os dados', clear_on_submit=False, border=True):
 
-    st.subheader('Briefing')
-    b = st.text_input('Qual a área de atuação da empresa?')
+    st.subheader('Lançamento')
+    b = st.date_input(label='Selecione uma data',format='DD/MM/YYYY')
 
-    c = st.text_input('Descreva sua empresa.')
+    c = desc = st.text_input('Descriçao do lançamento')
 
-    d = st.text_input('Descreva seu produto ou serviço.')
 
-    e = st.text_input('Qual o público-alvo? Quem é o seu cliente?')
+    lista_cr = ['Suspençao e Dinamica Veicular', 'Aerodinamica', 'Drivetrain', 'Powertrain', 'Eletronica e Controle', 'Estrutura', 'Freio', 'Gestao de Pessoas', 'Marketin', 'Comercial', 'Patrimonio']
+    d = st.selectbox('Selecione o centro de responsabilidade',(lista_cr))
 
-    f = st.text_input('Qual mensagem sua maraca deve transmitir para os seus clientes?')
+    e = st.text_input('Valor referente ao lançameto')
 
-    g = st.text_input('Quais são os adjetivos que melhor descreveriam sua identidade?')
+    f = st.selectbox('Natureza', ("Faturamentio",'Custo'))
+    
+    g = st.selectbox('Status', ("Concluido",'Pendente'))
 
-    h = st.text_input('Qual texto (exato) você quer que apareça no seu logo?')
+    h = st.date_input(label='Selecione uma data',format='DD/MM/YYYY')
 
-    i = st.text_input('Existe algum slogan?')
-
-    j = st.text_input('Existem algum(s) logo(s) que você acha interessante e que o perfil dele se encaixe com o seu? Se sim, deixe o link e explique o porquê.')
-
-    k = st.text_input('Espaço para o link do logo que você acha interessante.')
-
-    l = st.text_input('Existe alguma cor que NÃO deve ser utilizada? Se sim, por quê?')
-
-    m = st.text_input('Existe alguma cor que precisa ter?')
-
-    n = st.text_input('Onde o seu logo será utilizado?')
-
-    o = st.text_input('Tem algo que não deve ser incluído de maneira nenhuma no seu logo?')
-
-    p = st.text_input('Fique a vontade para colocar alguma observação extra!')
-
-    q = st.text_input('Deixe o seu melhor email para contato')
 
     st.write('Salve as informaçõs antes do envio')
     if st.form_submit_button('Salvar'):
         st.session_state.jsoninput = adicionar_entrega(
-            b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q)
+            b, c, d, e, f, g, h)
         st.success('Informações salvas com sucesso!')
 
 
