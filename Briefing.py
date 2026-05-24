@@ -6,8 +6,8 @@ from google.oauth2.service_account import Credentials
 from gspread_pandas import Spread, Client
 from gspread_dataframe import set_with_dataframe
 
-# ATENÇÃO: O set_page_config DEVE ser a primeira linha do Streamlit executada!
-st.set_page_config(page_title='Briefing para construção de logotipos', layout='wide')
+
+st.set_page_config(page_title='Lançamentos', layout='wide')
 
 # Definir escopos para Google Sheets e Google Drive
 scope = [
@@ -21,7 +21,7 @@ creds = Credentials.from_service_account_info(st.secrets["gcp_service_account"],
 # Autenticar com o gspread padrão (evita bugs de compatibilidade)
 client = gspread.authorize(creds)
 
-# 💡 DICA: Mude "trainee" pelo ID longo da URL da sua planilha se o erro persistir!
+
 spreadsheetname = "trainee" 
 
 try:
