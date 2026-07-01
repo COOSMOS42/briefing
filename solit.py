@@ -43,7 +43,7 @@ else:
 if 'jsoninput' not in st.session_state:
     st.session_state.jsoninput = pd.DataFrame(columns=['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'])
 
-def adicionar_entrega(B, C, D, E, F, G, H):
+def adicionar_entrega(B, C, D, E, F, G, H, I):
     entrega = {
         'B': [str(B)],
         'C': [C],
