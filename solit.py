@@ -63,7 +63,7 @@ def adicionar_entrega(B, C, D, E, F, G, H, I):
     return st.session_state.jsoninput
 
 with st.form('Preencha os dados', clear_on_submit=False, border=True):
-    st.subheader('Lançamento')
+    st.subheader('Solicitar')
     b = st.date_input(label='Selecione uma data', format='DD/MM/YYYY')
   
     lista_cr = ['Suspensão e Dinâmica Veicular', 'Aerodinâmica', 'Drivetrain', 'Powertrain', 'Eletrônica e Controle', 'Estrutura', 'Freio', 'Gestão de Pessoas', 'Marketing', 'Comercial', 'Patrimônio']
