@@ -42,7 +42,7 @@ with st.form('busca_subsistema', clear_on_submit=False, border=True):
     # Criando uma caixa de texto para o usuário digitar o subsistema
     # Dica: se a coluna 'subsistema' tiver nomes fixos, você pode trocar por st.selectbox mais tarde
     lista_cr = ['Suspensão e Dinâmica Veicular', 'Aerodinâmica', 'Drivetrain', 'Powertrain', 'Eletrônica e Controle', 'Estrutura', 'Freio', 'Gestão de Pessoas', 'Marketing', 'Comercial', 'Patrimônio']
-    subsistema_procurado = st.slectbox('Selecione o Subsistema (Ex: Aerodinamica, Elétrica):', (lista_cr))
+    subsistema_procurado = st.selectbox('Selecione o Subsistema (Ex: Aerodinamica, Elétrica):', (lista_cr))
 
     if st.form_submit_button('Pesquisar'):
         progress_text = "Buscando dados no inventário, aguarde..."
