@@ -72,7 +72,7 @@ with st.form('Preencha os dados', clear_on_submit=False, border=True):
     f = st.selectbox('Quantidade', range(1,101))
     g = st.selectbox('Natureza', ("Descartavel", 'Não Descartavel'))
     h = st.text_input('Decrição')
-    i = 'solicitado'
+    i = st.selectbox('Status', ('Solicitado'))
 
     st.write('Salve as informações antes do envio')
     if st.form_submit_button('Salvar'):
